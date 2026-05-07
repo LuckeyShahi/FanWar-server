@@ -92,7 +92,7 @@ app.post('/api/create-order', async (req, res) => {
       receipt:  `fanwar_${userId}_${packId}_${Date.now()}`,
       notes:    { packId, userId, coins: pack.coins, label: pack.label },
     });
-    res.json({ orderId: order.id, amount: order.amount, currency: order.currency, packId, coins: pack.coins, label: pack.label, price: pack.price });
+    res.json({ orderId: order.id, amount: order.amount, currency: order.currency, packId, coins: pack.coins, label: pack.label, price: pack.price, razorpayKeyId: process.env.RAZORPAY_KEY_ID });
   } catch (err) {
     console.error('Razorpay order error:', err);
     res.status(500).json({ error: 'Order creation failed' });
